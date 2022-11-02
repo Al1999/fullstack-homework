@@ -33,7 +33,45 @@ const server = http.createServer((req, res) => {
   }
 
   // Add your code here
-
+  if (url.pathname === '/attributes') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(`<table border="2">`);
+    res.write(`<tbody>`);
+    url.searchParams.forEach((value, key) => {
+      res.write(`<tr>`);
+      res.write(`<td>${key}</td>`);  
+      res.write(`<td>${value}</td>`);      
+      res.write(`</tr>`);
+    });
+    res.write(`</tbody>`);
+    res.write(`</table>`);
+  }
+  if (url.pathname === '/items') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(`<table border="2">`);
+    res.write(`<tbody>`);
+    url.searchParams.forEach((value, key) => {
+      res.write(`<tr>`);
+      res.write(`<td>${key}</td>`);  
+      res.write(`<td>${value}</td>`);      
+      res.write(`</tr>`);
+    });
+    res.write(`</tbody>`);
+    res.write(`</table>`);
+  }
+  if (url.pathname === '/characters') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(`<table border="2">`);
+    res.write(`<tbody>`);
+    url.searchParams.forEach((value, key) => {
+      res.write(`<tr>`);
+      res.write(`<td>${key}</td>`);  
+      res.write(`<td>${value}</td>`);      
+      res.write(`</tr>`);
+    });
+    res.write(`</tbody>`);
+    res.write(`</table>`);
+  }
   res.end();
 });
 

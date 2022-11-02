@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>03 - Form</title>
     <link
       rel="stylesheet"
@@ -12,7 +12,7 @@
     <script defer src="03-form.js"></script>
   </head>
   <body class="bg-dark">
-    <form class="bg-light border rounded w-50 mx-auto mt-5 p-3">
+    <form method="POST" action="/submit" class="bg-light border rounded w-50 mx-auto mt-5 p-3">
       <h1 class="mt-2 mb-4">Contact Form</h1>
       <div class="form-group">
         <label for="name">Name*</label>
@@ -32,8 +32,6 @@
       </div>
       <button style="margin-top:10px" type="submit" class="btn btn-primary" onClick="Form()">Submit</button>
       <button style="margin-top:10px ; background-color:grey" type="submit" class="btn btn-primary" onClick="Form()">Reset</button>
-
-
     </form>
   </body>
 </html>
