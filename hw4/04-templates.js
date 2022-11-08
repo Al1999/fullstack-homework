@@ -22,12 +22,11 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/capitals', (req, res) => {
+app.get('/capitals', (req, res, data) => {
   // map the output array to create an array with country names and capitals
   // check for empty data in the output array
 
   let countries = ['Afghanistan', 'Aland Islands', 'Albania'];
-
   res.render('page', {
     heading: 'Countries and Capitals',
     results: countries,
