@@ -3,7 +3,6 @@ const axios = require('axios');
 
 const app = express();
 const port = process.env.PORT || 5000;
-
 // Use Pug as the templating engine
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
@@ -13,23 +12,37 @@ const url = 'https://restcountries.com/v3.1/all';
 
 // Add your code here
 
+
+let dataArr = [];
+axios.get(url)
+    .then(response => {
+        const data = response.data;
+        dataArr = data;
+    });
+
 app.get('/', (req, res) => {
   // render pug template for the index.html file
-
   res.render('index', {
     heading: 'Countries of the World',
     main: 'Welcome to this application. Using the REST Countries API, we will be showing the countries and capitals of the world, the most populous countries in the world, and the number of countries in each region of the world',
   });
 });
 
-app.get('/capitals', (req, res, data) => {
+app.get('/capitals', (req, res) => {
   // map the output array to create an array with country names and capitals
   // check for empty data in the output array
 
-  let countries = ['Afghanistan', 'Aland Islands', 'Albania'];
+  let len = dataArr.length ;
+  let arr = [];
+  for ( let i = 0 ; i < len ; i++) {
+    let value = `${dataArr[i].name.common} - ${dataArr[i].capital}`;
+    arr.push(value);
+  };
+  arr.sort((a, b) => a.localeCompare(b));
+  // let countries = ['Afghanistan', 'Aland Islands', 'Albania'];
   res.render('page', {
     heading: 'Countries and Capitals',
-    results: countries,
+    results: arr,
   });
 });
 
