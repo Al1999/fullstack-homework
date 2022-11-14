@@ -3,9 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script>
+        $(document).ready(function(){
+          let name,email,feedback,check;
+          $("#submit").click(function(){
+            name=$("#name").val();
+            email=$("#email").val();
+            feedback=$("#message").val();
+            check=$("#check").val();
+            $.post("http://localhost:5000/submit",{name: name,email: email, message:feedback, check:check}, function(data){
+              if(data === 'yes') {
+                  alert("info recieved");
+                }
+            });
+          });
+        });
+      </script>
     <title>Form Exercise</title>
   </head>
-  <body>
-    <!-- Add your code here -->
+  <body class="bg-dark">
+    <form method="POST" action="/submit" class="bg-light border rounded w-50 mx-auto mt-5 p-3">
+      <h1 class="mt-2 mb-4">Contact Form</h1>
+      <div class="form-group">
+        <label for="name">Name*</label>
+        <input type="text" class="form-control" name="name" id="name" aria-describedby="name" placeholder="Enter name">
+      </div>
+      <div class="form-group" style="margin-top:10px">
+        <label for="email">Email*</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+      </div>
+      <div class="form-group" style="margin-top:10px">
+        <label class="form-check-label" for="exampleCheck1" >Submit your message:</label>
+        <textarea type="text" name="message" class="form-control" id="message" placeholder="Enter feedback" rows="5"></textarea>
+      </div>
+      <div class="form-check" style="margin-top:10px">
+        <input type="checkbox" name="check" class="form-check-input" id="Check1" >
+        <label class="form-check-label" for="Check1" >Sign up for the newsletter</label>
+      </div>
+      <input type='submit' value='Submit'>
+    </form>
   </body>
 </html>
